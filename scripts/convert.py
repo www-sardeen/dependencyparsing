@@ -13,7 +13,7 @@ import re
 import argparse
 import subprocess
 import json
-from sys import stdin, stdout
+from sys import stdin, stdout, stderr
 
 from nltk.corpus.util import LazyCorpusLoader
 from nltk.data import path as nltk_path
@@ -62,6 +62,11 @@ def main():
         "--prompt",
         action="store_true",
         help="prompt user after each token when --output flag not set",
+    )
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Debug by printing each line to console",
     )
     parser.add_argument(
         "--pre_process",
@@ -184,6 +189,8 @@ def main():
                 output_path, "w"
             ) if output_path else stdout as outfile:
                 for line in infile.readlines():
+                    if args.debug:
+                        print(line, file=stderr)
                     psd += line
                     if len(line.strip()) == 0 and len(psd.strip()) > 0:
 
