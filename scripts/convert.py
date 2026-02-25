@@ -213,7 +213,7 @@ def main():
             if output_path and args.post_process:
                 run_post_file(output_path)
 
-            print(f"{file_num}\t{file_id}\t{file_sents+1}")
+            ####print(f"{file_num}\t{file_id}\t{file_sents+1}")
 
         exit()
 
