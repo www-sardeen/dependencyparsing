@@ -82,6 +82,11 @@ def main():
         help="path to corpora parent folder, default is current working dir",
     )
     parser.add_argument(
+        "--dest",
+        default="../output",
+        help="path to output folder",
+    )
+    parser.add_argument(
         "--output", "-o", help="path to output folder", action="store_true"
     )
     parser.add_argument(
@@ -162,13 +167,13 @@ def main():
                 middle_path = input_path.split("../corpora/additions2019/psd/")[1]
                 output_file = re.sub(r"\.psd", ".conllu", middle_path)
                 output_path = (
-                    os.path.join("../CoNLLU/additions2019/", output_file)
+                    os.path.join("../output/additions2019/", output_file)
                     if output_file
                     else None
                 )
             else:
                 output_path = (
-                    os.path.join("../CoNLLU/icepahc/", output_file)
+                    os.path.join(args.dest, output_file)
                     if output_file
                     else None
                 )
@@ -273,17 +278,17 @@ def main():
         output_file = re.sub(r"\.psd", ".conllu", file_id) if args.output else None
         if args.faroese:
             output_path = (
-                os.path.join("../CoNLLU/farpahc/", output_file) if output_file else None
+                os.path.join("../output/farpahc/", output_file) if output_file else None
             )
         elif args.additions:
             output_path = (
-                os.path.join("../CoNLLU/additions2019/", output_file)
+                os.path.join("../output/additions2019/", output_file)
                 if output_file
                 else None
             )
         else:
             output_path = (
-                os.path.join("../CoNLLU/icepahc/", output_file) if output_file else None
+                os.path.join(args.dest, output_file) if output_file else None
             )
 
         with open(output_path, "w") if args.output else stdout as outfile:
@@ -428,19 +433,19 @@ def main():
             output_file = re.sub(r"\.psd", ".conllu", file_id) if args.output else None
             if args.faroese:
                 output_path = (
-                    os.path.join("../CoNLLU/farpahc/", output_file)
+                    os.path.join("../output/farpahc/", output_file)
                     if output_file
                     else None
                 )
             elif args.additions:
                 output_path = (
-                    os.path.join("../CoNLLU/additions2019/", output_file)
+                    os.path.join("../output/additions2019/", output_file)
                     if output_file
                     else None
                 )
             else:
                 output_path = (
-                    os.path.join("../CoNLLU/icepahc/", output_file)
+                    os.path.join(args.dest, output_file)
                     if output_file
                     else None
                 )
