@@ -59,6 +59,11 @@ def main():
     """
     parser = argparse.ArgumentParser(description="Script for testing UD converter")
     parser.add_argument(
+        "--prompt",
+        action="store_true",
+        help="prompt user after each token when --output flag not set",
+    )
+    parser.add_argument(
         "--pre_process",
         "-pr",
         action="store_true",
@@ -192,7 +197,8 @@ def main():
                         outfile.write(c.add_space_after(dep).to_conllU())
 
                         if not output_path:
-                            input()
+                            if args.prompt:
+                                input()
                         file_sents += 1
                         psd = ""
 
@@ -343,7 +349,8 @@ def main():
 
                             if not output_path:
                                 # when writing to stdout, asks for user input (enter)
-                                input()
+                                if args.prompt:
+                                    input()
                             file_sents += 1  # sentence count runner incremented by 1
                         else:
                             # dependency graphs in 'to_join' joined into single graph
@@ -375,7 +382,8 @@ def main():
 
                             if not output_path:
                                 # when writing to stdout, asks for user input (enter)
-                                input()
+                                if args.prompt:
+                                    input()
                             file_sents += 1  # sentence count runner incremented by 1
 
                     except Exception as ex:
@@ -491,7 +499,8 @@ def main():
                                 outfile.write(dep.to_conllU())
 
                                 if not output_path:
-                                    input()
+                                    if args.prompt:
+                                        input()
 
                                 file_sents += (
                                     1  # sentence count runner incremented by 1
@@ -524,7 +533,8 @@ def main():
                                 outfile.write(dep.to_conllU())
 
                                 if not output_path:
-                                    input()
+                                    if args.prompt:
+                                        input()
 
                                 file_sents += (
                                     1  # sentence count runner incremented by 1
