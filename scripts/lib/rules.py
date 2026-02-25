@@ -284,6 +284,7 @@ Icepahc_feats = {
             "IMP": "Imp",  # imperative
             "I": "Ind",  # indicative (IcePaHC POS-tag)
             "S": "Sub",  # subjunctive (IcePaHC POS-tag)
+            "X": "NA", # not specified
         },
         "Tense": {"P": "Pres", "D": "Past"},
         "VerbForm": {
