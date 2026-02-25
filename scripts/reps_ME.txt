@@ -1,0 +1,14 @@
+s/BED/BEDX/g
+s/BEP/BEPX/g
+s/DOD/DODX/g
+s/DOP/DOPX/g
+s/HVD/HVDX/g
+s/HVP/HVPX/g
+s/VBD/VBDX/g
+s/VBP/VBPX/g
+s/N\$/N-G/g
+s/NS\$/NS-G/g
+s/MD0/MD/g
+s/-LFD//g
+s/-RSP//g
+s/ADJ\$/ADJ-G/g
